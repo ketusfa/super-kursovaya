@@ -8,4 +8,4 @@ router.get('/auth', (req, res) => {
     res.send('<h1>HEE</h1>')
 })
 
-module.exports = router
+module.exports = router;
