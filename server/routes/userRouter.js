@@ -5,7 +5,7 @@ router.post('/registration',)
 router.post('/login',)
 
 router.get('/auth', (req, res) => {
-    res.send('<h1>HEE</h1>')
+    res.json({message: "ee"})
 })
 
-module.exports = router
+module.exports = router;
