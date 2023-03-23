@@ -3,8 +3,12 @@ const express = require('express');
 const sequelize = require("./bd");
 const models = require('./models/models');
 const cors = require('cors');
+<<<<<<< HEAD
 const router = require('./routes/index.js');
 
+=======
+const router = require('./routes/index');
+>>>>>>> 4c0c5aae9ee3e4eef769f3c57ac2422ff21bd046
 
 const PORT = process.env.PORT || 5000;
 //прикол 
