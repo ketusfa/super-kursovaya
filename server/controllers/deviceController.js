@@ -62,7 +62,7 @@ class DeviceController {
                 include: [{model: DeviceInfo, as: 'info'}]
             }
         )
-        return res.json(device);
+        return res.json(device); 
     }
 }
 
