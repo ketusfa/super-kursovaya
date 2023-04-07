@@ -1,9 +1,16 @@
 import React from "react";
-
+import Typebar from "../../components/Typebar/Typebar"
 
 const Shop = () => {
     return (
-        <h2>Shop</h2>
+        <>
+        <div className="side">
+            <Typebar/>
+        </div>
+        <div className="itemplace">
+
+        </div>
+        </>
     );
 }
 
