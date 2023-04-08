@@ -10,26 +10,49 @@ export default class DeviceStore {
             {id: 4, name: "type4"},
        ];
        this._devices = [
-            {id:1, 
-            name: "hm", 
-            price:2500, 
-            raiting:5
+            {
+                id:1, 
+                name: "hm", 
+                price:2500, 
+                raiting:5,
+               
+            },
+
+            {
+                id:2, 
+                name: "nice", 
+                price:100, 
+                raiting:4
             }
        ];
-       this._slectedType = {};
-        makeAutoObservable(this)
-    }
+       this._brands = [
+        {id: 1, name: "brand1"},
+        {id: 2, name: "brand2"},
+        {id: 3, name: "brand3"},
+        {id: 4, name: "brand4"},
+    ];
+       this._selectedType = {};   
+       this._selectedBrand = {};
+       makeAutoObservable(this)        
+}
 
     setTypes(types) {
         this._types = types;
     }
     
     setSelectedType(type) {
-        this._selectedType = type
+        this._selectedType = type;
+    }
+
+    setSelectedBrand(brand) {
+        this._selectedBrand = brand;
     }
 
     setDevices(devices) {
         this._udevices = devices;
+    }
+    setBrands(brands) {
+        this._brands = brands;
     }
 
     get types() {
@@ -39,10 +62,14 @@ export default class DeviceStore {
     get SelectedType() {
        return this._selectedType;
     }
+    get SelectedBrand() {
+        return this._selectedBrand;
+     }
 
     get brands() {
         return this._brands
     }
+
     get devices() {
         return this._devices
     }
