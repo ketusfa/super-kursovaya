@@ -4,8 +4,11 @@ import React from "react";
 const Admin = () => {
     return (
         <>
-        <h2>Admin</h2>
-        <p>3333</p>
+        <div>
+            <button>add type</button>
+            <button>add brand</button>
+            <button>add device</button>
+        </div>
         </>
     );
 }
