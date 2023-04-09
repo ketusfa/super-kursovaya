@@ -1,0 +1,30 @@
+.auth__wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.auth__card {
+    width: 40%;
+    background-color: rgb(194, 111, 190);
+    color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 4rem;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    
+
+}
+.auth__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+     input {
+        width: 85%;
+        margin-top: .3rem;
+        font-size: 1.2rem;
+        border: none;
+     }
+}

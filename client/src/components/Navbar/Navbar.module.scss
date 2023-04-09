@@ -1,4 +1,27 @@
+.navbar__wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: blueviolet;
+
+    
+}
+
 .linkrow {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+}
+.navbar__link {
+    margin-right: 2rem;
+    font-size: 1.5rem;
+}
+
+.navbar__button {
+    padding: .5rem 1rem;
+    margin-right: 1rem;
+    font-size: 1rem;
+    background-color: aliceblue;
+    border: 0px;
+    
 }
