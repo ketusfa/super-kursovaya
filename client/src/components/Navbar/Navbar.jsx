@@ -4,7 +4,13 @@ import { Link } from "react-router-dom";
 import { Context } from "../../index"
 import s from "./Navbar.module.scss"
 import {observer} from "mobx-react-lite"
+import {ADMIN_ROUTE} from "../../utils/consts"
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+
 const Navbar = observer(() => {
+
+    const history = useHistory()
+
     const {user} = useContext(Context)
     return (
         <>
@@ -16,8 +22,8 @@ const Navbar = observer(() => {
             </div>
             {user.isAuth ?
                 <>
-                    <button>adminpanel</button>
-                    <button onClick={() => user.setIsAuth(false)} >exit</button>
+                    <button onClick={() => history.push(ADMIN_ROUTE)}  >adminpanel</button>
+                    <button onClick={() => user.setIsAuth(false)}>exit</button>
                 </>
                 :
                 <>
