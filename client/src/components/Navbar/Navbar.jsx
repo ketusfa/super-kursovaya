@@ -4,10 +4,13 @@ import { Link } from "react-router-dom";
 import { Context } from "../../index"
 import s from "./Navbar.module.scss"
 import {observer} from "mobx-react-lite"
-import { useNavigate } from "react-router-dom";
-import {ADMIN_ROUTE, LOGIN_ROUTE} from "../../utils/consts"
+import {ADMIN_ROUTE} from "../../utils/consts"
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const Navbar = observer(() => {
+
+    const history = useHistory()
+
     const {user} = useContext(Context)
     let navigate = useNavigate()
 
