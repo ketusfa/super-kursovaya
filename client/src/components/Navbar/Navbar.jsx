@@ -4,32 +4,35 @@ import { Link } from "react-router-dom";
 import { Context } from "../../index"
 import s from "./Navbar.module.scss"
 import {observer} from "mobx-react-lite"
-import {ADMIN_ROUTE} from "../../utils/consts"
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import {ADMIN_ROUTE, LOGIN_ROUTE} from "../../utils/consts"
+import {  useHistory} from "react-router-dom"
 
 const Navbar = observer(() => {
 
     const history = useHistory()
 
     const {user} = useContext(Context)
+    
+
     return (
         <>
-        <div>
+        <div className={s.navbar__wrapper}>
             <div className={s.linkrow}>
-                <Link href="">ess</Link>
-                <Link href="">mn</Link>
-                <Link href="">gg</Link>
+                <Link className={s.navbar__link} href="">Ссылка 1</Link>
+                <Link className={s.navbar__link} href="">Ссылка 2</Link>
+                <Link className={s.navbar__link} href="">Ссылка 3</Link>
             </div>
             {user.isAuth ?
-                <>
-                    <button onClick={() => history.push(ADMIN_ROUTE)}  >adminpanel</button>
-                    <button onClick={() => user.setIsAuth(false)}>exit</button>
-                </>
+                
+                <div>
+                    <button className={s.navbar__button} onClick={() => history.push(ADMIN_ROUTE)}>Панель администратора</button>
+                    <button className={s.navbar__button} onClick={() => history.push(LOGIN_ROUTE)}>Выход</button>
+                </div>
                 :
-                <>
-               
-                <button onClick={() => user.setIsAuth(true)}>autorizasiya</button>
-                </>
+                
+               <div>
+                    <button className={s.navbar__button} onClick={() => user.setIsAuth(true)}>Авторизация</button>
+                </div>
                 }
         </div>
         </>
