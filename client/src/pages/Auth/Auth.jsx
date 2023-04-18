@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import {REGISTRATION_ROUTE, LOGIN_ROUTE} from "../../utils/consts"
+import { registration } from "../../http/userAPI";
 
 import s from "./Auth.module.scss"
 
@@ -8,6 +9,20 @@ const Auth = () => {
 
     const location = useLocation()
     const isLogin = location.pathname === LOGIN_ROUTE; 
+
+    const click = async () => {
+        if (isLogin) {
+            const response = await login();
+            console.log(response)
+        } else {
+            const response = await registration();
+            console.log(response)
+        }
+
+        
+    }
+
+
     return (
         <div className={s.auth__wrapper}>
         <div className={s.auth__card}>
@@ -26,7 +41,7 @@ const Auth = () => {
             </div>
 
             }
-            <button>
+            <button onClick={click}>
                 {isLogin ? "Войти" : 'Зарегистрироваться'}
             </button>
         </form>
