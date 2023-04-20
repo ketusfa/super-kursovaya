@@ -12,17 +12,18 @@ export default class DeviceStore {
        this._devices = [
             {
                 id:1, 
-                name: "hm", 
+                name: "device1", 
                 price:2500, 
                 raiting:5,
-               
+                img: "https://animecorner.me/wp-content/uploads/2022/11/bocchi-the-rock-anime-trailer.jpg"
             },
 
             {
                 id:2, 
-                name: "nice", 
+                name: "device2", 
                 price:100, 
-                raiting:4
+                raiting:4,
+                img: "https://staticg.sportskeeda.com/editor/2022/12/ba0df-16720859960960-1920.jpg"
             }
        ];
        this._brands = [

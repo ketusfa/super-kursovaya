@@ -1,0 +1,21 @@
+.device__wrapper {
+    width: 30vw;
+    border: 2px solid black;
+    margin: 10px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.device__imagewrapper img {
+    max-width: 100%;
+    object-fit: cover;
+}
+.device__info {
+    border: 1px solid blue;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+}
+

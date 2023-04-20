@@ -1,0 +1,11 @@
+.brand__row {
+    display: flex;
+    flex-direction: row;
+    margin: 1rem 0;
+}
+
+.brand__item {
+    margin-left: 2rem;
+    padding: 1rem;
+    border: 1px solid pink;
+}
