@@ -1,0 +1,11 @@
+.type__row {
+    display: flex;
+    flex-direction: column;
+    margin: 5rem 1rem 0;
+}
+
+.type__item {
+    margin-top: 2rem;
+    padding: 1rem;
+    border: 1px solid pink;
+}
