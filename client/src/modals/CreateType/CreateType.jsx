@@ -2,7 +2,6 @@ import s from "../modals.module.scss"
 
 const CreateType = ({setModal, modal}) => {
     return(
-        
             <div className={`${s.overlay} ${modal ? s.show : "" }`}> 
             <div className={s.modal__wrapper}>
                 
@@ -15,10 +14,7 @@ const CreateType = ({setModal, modal}) => {
                     <button>es</button>
                 </form>
             </div>
-        
         </div>
-        
-      
     )
 
 }
