@@ -22,28 +22,26 @@ const Auth = observer(() => {
     const [email, setEmail] = React.useState('')
     const [password, setPassword] = React.useState('')
 
-    const click = async () => {
-       try {
-        let data;
-        if (isLogin) {
-            data = await login(email, password);
-            
-        } else {
-            data = await registration(email, password);
-            
+    const click = async (e) => {
+        try {
+            e.preventDefault()
+            let data;
+            if (isLogin) {
+                data = await login(email, password);
+            } else {
+                data = await registration(email, password);
+            }
+            user.setUser(data)
+            user.setIsAuth(true)
+            if (email === "admin"){
+                user.setIsAdmin(true)
+            }
+            history.push(SHOP_ROUTE)
+            console.log("pereshel")
+        } catch (e) {
+            alert(e.response.data.message)
         }
-        user.setUser(user)
-        user.setIsAuth(true)
-        history.push(SHOP_ROUTE)
 
-       } catch (e) {
-        alert(e.response.data.message)
-
-       }
-
-        
-
-        
     }
 
 

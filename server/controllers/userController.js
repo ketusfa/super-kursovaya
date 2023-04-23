@@ -50,7 +50,7 @@ class UserController {
         //if (!id) {
          //   return next(ApiError.badRequest('Не задан ID'))
    // }
-      res.json(id);
+    return res.json({token})
    }
 }
 
