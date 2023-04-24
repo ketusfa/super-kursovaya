@@ -5,13 +5,16 @@ import DevicePage from "./pages/DevicePage/DevicePage";
 import Shop from "./pages/Shop/Shop";
 import { ADMIN_ROUTE,BASKET_ROUTE, SHOP_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE, DEVICE_ROUTE } from "./utils/consts";
 
-
-
-export const authRoutes = [
+export const adminRoutes = [
     {
         path: ADMIN_ROUTE,
         Component: Admin
     },
+];
+
+
+export const authRoutes = [
+ 
     {
         path: BASKET_ROUTE,
         Component: Basket

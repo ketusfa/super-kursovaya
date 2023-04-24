@@ -8,16 +8,24 @@ import {Context} from "./index";
 import {check} from "./http/userAPI";
 
 
-const App = observer( () => {
+const App = observer(() => {
   const {user} = useContext(Context)
   const [loading, setLoading] = useState(true)
 
     useEffect(() => {
       console.log("pri 1 zahode")
       console.log(user)
-      check().then(() => {
+      check().then(data => {
+        console.log("data")
+        console.log(data)
+
           user.setUser(true)
           user.setIsAuth(true)
+          if (data.email === "admin"){
+            user.setIsAdmin(true)
+          }
+          console.log("pri check")
+          console.log(user)
       }).finally(() => setLoading(false))
   }, [])
 

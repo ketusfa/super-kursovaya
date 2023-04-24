@@ -15,9 +15,10 @@ const Auth = observer(() => {
     const {user} = useContext(Context)
 
     const location = useLocation()
+    const history = useHistory()
     const isLogin = location.pathname === LOGIN_ROUTE; 
 
-    const history = useHistory()
+    
 
     const [email, setEmail] = React.useState('')
     const [password, setPassword] = React.useState('')
@@ -35,9 +36,12 @@ const Auth = observer(() => {
             user.setIsAuth(true)
             if (email === "admin"){
                 user.setIsAdmin(true)
-            }
+               
+            } 
             history.push(SHOP_ROUTE)
-            console.log("pereshel")
+            
+            console.log("pereshel v shop, user posle logina:")
+            console.log(user)
         } catch (e) {
             alert(e.response.data.message)
         }
