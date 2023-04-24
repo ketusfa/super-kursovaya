@@ -15,35 +15,37 @@ const Auth = observer(() => {
     const {user} = useContext(Context)
 
     const location = useLocation()
+    const history = useHistory()
     const isLogin = location.pathname === LOGIN_ROUTE; 
 
-    const history = useHistory()
+    
 
     const [email, setEmail] = React.useState('')
     const [password, setPassword] = React.useState('')
 
-    const click = async () => {
-       try {
-        let data;
-        if (isLogin) {
-            data = await login(email, password);
+    const click = async (e) => {
+        try {
+            e.preventDefault()
+            let data;
+            if (isLogin) {
+                data = await login(email, password);
+            } else {
+                data = await registration(email, password);
+            }
+            user.setUser(data)
+            user.setIsAuth(true)
+            if (email === "admin"){
+                user.setIsAdmin(true)
+               
+            } 
+            history.push(SHOP_ROUTE)
             
-        } else {
-            data = await registration(email, password);
-            
+            console.log("pereshel v shop, user posle logina:")
+            console.log(user)
+        } catch (e) {
+            alert(e.response.data.message)
         }
-        user.setUser(user)
-        user.setIsAuth(true)
-        history.push(SHOP_ROUTE)
 
-       } catch (e) {
-        alert(e.response.data.message)
-
-       }
-
-        
-
-        
     }
 
 
