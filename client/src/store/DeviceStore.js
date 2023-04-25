@@ -3,35 +3,10 @@ import {makeAutoObservable} from "mobx"
 export default class DeviceStore {
 
     constructor() {
-       this._types = [
-            {id: 1, name: "type1"},
-            {id: 2, name: "type2"},
-            {id: 3, name: "type3"},
-            {id: 4, name: "type4"},
-       ];
-       this._devices = [
-            {
-                id:1, 
-                name: "device1", 
-                price:2500, 
-                raiting:5,
-                img: "https://animecorner.me/wp-content/uploads/2022/11/bocchi-the-rock-anime-trailer.jpg"
-            },
+       this._types = [];
+       this._devices = [];
+       this._brands = [];
 
-            {
-                id:2, 
-                name: "device2", 
-                price:100, 
-                raiting:4,
-                img: "https://staticg.sportskeeda.com/editor/2022/12/ba0df-16720859960960-1920.jpg"
-            }
-       ];
-       this._brands = [
-        {id: 1, name: "brand1"},
-        {id: 2, name: "brand2"},
-        {id: 3, name: "brand3"},
-        {id: 4, name: "brand4"},
-    ];
        this._selectedType = {};   
        this._selectedBrand = {};
        makeAutoObservable(this)        
@@ -50,7 +25,7 @@ export default class DeviceStore {
     }
 
     setDevices(devices) {
-        this._udevices = devices;
+        this._devices = devices;
     }
     setBrands(brands) {
         this._brands = brands;
