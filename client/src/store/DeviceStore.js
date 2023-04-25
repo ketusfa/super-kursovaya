@@ -6,9 +6,9 @@ export default class DeviceStore {
        this._types = [];
        this._devices = [];
        this._brands = [];
-
-       this._selectedType = {};   
+       this._selectedType = {};
        this._selectedBrand = {};
+
        makeAutoObservable(this)        
 }
 
@@ -35,10 +35,10 @@ export default class DeviceStore {
         return this._types
     }
 
-    get SelectedType() {
+    get selectedType() {
        return this._selectedType;
     }
-    get SelectedBrand() {
+    get selectedBrand() {
         return this._selectedBrand;
      }
 
