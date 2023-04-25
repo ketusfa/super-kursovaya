@@ -19,7 +19,7 @@ const App = observer(() => {
         console.log("data")
         console.log(data)
 
-          user.setUser(true)
+          user.setUser(data)
           user.setIsAuth(true)
           if (data.email === "admin"){
             user.setIsAdmin(true)

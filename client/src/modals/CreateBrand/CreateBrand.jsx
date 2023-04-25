@@ -1,17 +1,31 @@
+import React, {useState} from "react";
+import {createBrand} from "../../http/deviceAPI";
 import s from "../modals.module.scss"
 
 const CreateBrand = ({setModal, modal}) => {
+
+    const [value, setValue] = useState('')
+
+    const addBrand = (e) => {
+        e.preventDefault()
+        createBrand({name: value}).then(() => {
+            setValue('');
+            setModal(false);
+        })
+    }
+
+
     return(
         <div className={`${s.overlay} ${modal ? s.show : "" }`}> 
         <div className={s.modal__wrapper}>
             
-            <h1>CreateBrand</h1>
-            <button className={s.modal__close} onClick={() => setModal(false)}>close</button>
+            <h1>Добавить новый бренд</h1>
+            <button className={s.modal__close} onClick={() => setModal(false)}>&#10006;</button>
             
             <form action="" className={s.modal__form}>
-                <input type="text" placeholder="1"/>
-                <input type="text" placeholder="2 "/>
-                <button>es</button>
+            <input  value={value} onChange={e => setValue(e.target.value)} 
+                    type="text" placeholder="Введите название бренда" required/>
+                <button type="submit" onClick={addBrand} >Добавить</button>
             </form>
         </div>
     </div>

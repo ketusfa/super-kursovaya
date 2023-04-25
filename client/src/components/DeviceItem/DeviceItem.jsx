@@ -12,7 +12,7 @@ const DeviceItem = ({device}) => {
         <>
         <div className={s.device__wrapper} onClick={() => history.push(DEVICE_ROUTE + '/' + device.id)}>
             <div className={s.device__imagewrapper}>
-                <img src={device.img}  alt={device.name}/>
+                <img src={process.env.REACT_APP_API_URL + device.img}  alt={device.name}/>
             </div>
             <div className={s.device__info}>
                 {device.name}

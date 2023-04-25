@@ -36,6 +36,8 @@ class DeviceController {
     }
 
     async getAll(req, res) {
+       
+            
         const {brandId, typeId} = req.query
         let devices;
         if (!brandId && !typeId) {
@@ -52,6 +54,7 @@ class DeviceController {
 
         }
         return res.json(devices)
+  
     }
 
     async getOne(req, res) {
