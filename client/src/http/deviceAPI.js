@@ -26,6 +26,12 @@ export const createDevice = async (device) => {
     return data
 }
 
+export const delDevice = async (device) => {
+    console.log(device)
+    const {data} = await $authHost.delete('api/device',  { data: device })
+    return data
+}
+
 export const fetchDevices = async (typeId, brandId) => {
     const {data} = await $host.get('api/device', {params: {
             typeId, brandId
