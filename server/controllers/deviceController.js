@@ -2,6 +2,7 @@ const uuid = require('uuid')
 const path = require('path');
 const {Device, DeviceInfo} = require('../models/models');
 const ApiError = require('../error/ApiError');
+const { response } = require('express');
 
 
 class DeviceController {
@@ -25,12 +26,28 @@ class DeviceController {
                 });
             }
 
-
-           
-
             return res.json(device)
 
         } catch (e) {
+            next(ApiError.badRequest(e.message))
+        }
+    }
+
+    async delete(req, res, next) {
+        try {
+            const {name} = req.body;
+            const device = await Device.findOne({
+                where: {
+                    name: name
+                 }
+            });
+            if (device) {
+              await device.destroy(); 
+              res.sendStatus(204);
+            } else {
+            next(ApiError.badRequest('Устройство с таким именем не найдено!'))
+            }
+        }  catch (e) {
             next(ApiError.badRequest(e.message))
         }
     }

@@ -11,6 +11,11 @@ export const fetchTypes = async () => {
     return data
 }
 
+export const delType = async (type) => {
+    const {data} = await $authHost.delete('api/type',  { data: type })
+    return data
+}
+
 export const createBrand = async (brand) => {
     const {data} = await $authHost.post('api/brand', brand)
     return data
@@ -21,8 +26,18 @@ export const fetchBrands = async () => {
     return data
 }
 
+export const delBrand = async (brand) => {
+    const {data} = await $authHost.delete('api/brand',  { data: brand })
+    return data
+}
+
 export const createDevice = async (device) => {
     const {data} = await $authHost.post('api/device', device)
+    return data
+}
+
+export const delDevice = async (device) => {
+    const {data} = await $authHost.delete('api/device',  { data: device })
     return data
 }
 
