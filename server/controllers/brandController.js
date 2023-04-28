@@ -22,6 +22,7 @@ class BrandController {
             });
             if (brand) {
               await brand.destroy();
+              res.send("Успешно удалено");
             } else {
             next(ApiError.badRequest('Такого бренда не найдено!'))
             }

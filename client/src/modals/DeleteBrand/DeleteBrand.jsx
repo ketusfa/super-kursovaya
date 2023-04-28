@@ -8,19 +8,14 @@ const DeleteBrand = ({setModal, modal}) => {
     const [value, setValue] = useState('')
 
     const dBrand = async (e) => {
-        
         try {
             e.preventDefault()
-            let data = await delBrand({name: value}).then(() => {
-                console.log("del type")
-                setValue('');
-                setModal(false);
-            })
-            
+            await delBrand({name: value})
+            setValue('');
+            setModal(false);
         } catch(err){
              alert(err.response.data.message)
-        }
-       
+        }   
     }
 
 

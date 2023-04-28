@@ -10,16 +10,12 @@ const DeleteType = ({setModal, modal}) => {
     const dType = async (e) => {
         try {
             e.preventDefault()
-            let data = await delType({name: value}).then(() => {
-                console.log("del type")
-                setValue('');
-                setModal(false);
-            })
-            
+            await delType({name: value})
+            setValue('');
+            setModal(false);
         } catch(err){
              alert(err.response.data.message)
-        }
-       
+        }       
     }
 
 

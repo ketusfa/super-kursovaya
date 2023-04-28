@@ -2,6 +2,7 @@ const uuid = require('uuid')
 const path = require('path');
 const {Device, DeviceInfo} = require('../models/models');
 const ApiError = require('../error/ApiError');
+const { response } = require('express');
 
 
 class DeviceController {
@@ -41,7 +42,8 @@ class DeviceController {
                  }
             });
             if (device) {
-              await device.destroy();
+              await device.destroy(); 
+              res.sendStatus(204);
             } else {
             next(ApiError.badRequest('Устройство с таким именем не найдено!'))
             }

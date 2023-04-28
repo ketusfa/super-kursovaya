@@ -22,6 +22,8 @@ const CreateDevice =  observer( ({setModal, modal}) => {
         setFile(null)
         fileInputRef.current.value = null;
         setInfo([])
+        device.setSelectedType({})
+        device.setSelectedBrand({})
     }
 
     
@@ -115,7 +117,8 @@ const CreateDevice =  observer( ({setModal, modal}) => {
                 type="text"  
                 value={name}
                 onChange={e => setName(e.target.value)} 
-                placeholder="Название устройства " required/>
+                placeholder="Название устройства " 
+                required/>
 
                 <input 
                 type="number" 
