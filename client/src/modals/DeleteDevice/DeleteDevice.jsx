@@ -7,19 +7,17 @@ const DeleteDevice = ({setModal, modal}) => {
 
     const [value, setValue] = useState('')
 
-    const dDevice = (e) => {
+    const dDevice = async (e) => {
         
         try {
             e.preventDefault()
-            console.log(value)
-            delDevice({name: value}).then(() => {
-                console.log("device api отправлен")
+            let data = await delDevice({name: value}).then(() => {
                 setValue('');
                 setModal(false);
             })
             
         } catch(err){
-            alert(err.response.data.message)
+             alert(err.response.data.message)
         }
        
     }

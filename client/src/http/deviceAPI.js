@@ -27,7 +27,6 @@ export const createDevice = async (device) => {
 }
 
 export const delDevice = async (device) => {
-    console.log(device)
     const {data} = await $authHost.delete('api/device',  { data: device })
     return data
 }

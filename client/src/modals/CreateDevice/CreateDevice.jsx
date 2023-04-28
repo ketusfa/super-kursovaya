@@ -1,4 +1,4 @@
-import React, {useState, useContext, useEffect} from "react";
+import React, {useState, useContext, useEffect, useRef} from "react";
 import {createDevice, fetchBrands, fetchTypes} from "../../http/deviceAPI";
 import {observer} from "mobx-react-lite";
 import {Context} from "../../index"
@@ -13,6 +13,16 @@ const CreateDevice =  observer( ({setModal, modal}) => {
     const [price, setPrice] = useState(0)
     const [file, setFile] = useState(null)
     const [info, setInfo] = useState([])
+    const fileInputRef = useRef(null);
+
+    const resetData = () => {
+        setModal(false)
+        setName("")
+        setPrice(0)
+        setFile(null)
+        fileInputRef.current.value = null;
+        setInfo([])
+    }
 
     
 
@@ -51,7 +61,7 @@ const CreateDevice =  observer( ({setModal, modal}) => {
             formData.append('typeId', device.selectedType.id)
             formData.append('info', JSON.stringify(info))
             console.log(name, price, file, device.selectedBrand.id, device.selectedType.id, JSON.stringify(info))
-            createDevice(formData).then(() => setModal(false))
+            createDevice(formData).then(() => resetData())
         } catch(error){
             alert(error)
         }
@@ -119,6 +129,7 @@ const CreateDevice =  observer( ({setModal, modal}) => {
                 <input 
                 type="file" 
                 onChange={selectFile} 
+                ref={fileInputRef}
                 placeholder="Изображение" 
                 required/>
                 
