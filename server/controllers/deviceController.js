@@ -25,12 +25,27 @@ class DeviceController {
                 });
             }
 
-
-           
-
             return res.json(device)
 
         } catch (e) {
+            next(ApiError.badRequest(e.message))
+        }
+    }
+
+    async delete(req, res, next) {
+        try {
+            const {name} = req.body;
+            const device = await Device.findOne({
+                where: {
+                    name: name
+                 }
+            });
+            if (device) {
+              await device.destroy();
+            } else {
+            next(ApiError.badRequest('Устройство с таким именем не найдено!'))
+            }
+        }  catch (e) {
             next(ApiError.badRequest(e.message))
         }
     }

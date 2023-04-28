@@ -4,6 +4,8 @@ const router = new Router()
 
 
 router.post('/', brandController.create)
+router.delete('/', brandController.delete)
 router.get('/', brandController.getAll)
-//ddd
+
+
 module.exports = router

@@ -68,10 +68,10 @@ Device.belongsTo(Brand)
 Device.hasMany(Rating)
 Rating.belongsTo(Device)
 
-Device.hasMany(BasketDevice)
+Device.hasMany(BasketDevice, {onDelete: 'CASCADE'})
 BasketDevice.belongsTo(Device)
 
-Device.hasMany(DeviceInfo, {as: 'info'});
+Device.hasMany(DeviceInfo, {as: 'info',   onDelete: 'CASCADE'});
 DeviceInfo.belongsTo(Device)
 
 Type.belongsToMany(Brand, {through: TypeBrand })

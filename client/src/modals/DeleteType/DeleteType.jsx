@@ -1,16 +1,17 @@
 import s from "../modals.module.scss"
 import React, {useState} from "react";
 
-import {delDevice} from "../../http/deviceAPI";
+import {delType} from "../../http/deviceAPI";
 
-const DeleteDevice = ({setModal, modal}) => {
+const DeleteType = ({setModal, modal}) => {
 
     const [value, setValue] = useState('')
 
-    const dDevice = async (e) => {   
+    const dType = async (e) => {
         try {
             e.preventDefault()
-            let data = await delDevice({name: value}).then(() => {
+            let data = await delType({name: value}).then(() => {
+                console.log("del type")
                 setValue('');
                 setModal(false);
             })
@@ -27,14 +28,14 @@ const DeleteDevice = ({setModal, modal}) => {
             <div className={`${s.overlay} ${modal ? s.show : "" }`}> 
             <div className={s.modal__wrapper}>
                 
-                <h1>Удалить устройство</h1>
+                <h1>Удалить тип</h1>
                 <button className={s.modal__close} onClick={() => setModal(false)}>&#10006;</button>
                 
                 <form action="" className={s.modal__form}>
                     <input  value={value} onChange={e => setValue(e.target.value)} 
-                    type="text" placeholder="Введите имя устройства" required/>
+                    type="text" placeholder="Введите тип" required/>
                    
-                    <button type="submit" onClick={dDevice} >Удалить</button>
+                    <button type="submit" onClick={dType} >Удалить</button>
                 </form>
             </div>
         </div>
@@ -42,4 +43,4 @@ const DeleteDevice = ({setModal, modal}) => {
 
 }
 
-export default DeleteDevice
+export default DeleteType
