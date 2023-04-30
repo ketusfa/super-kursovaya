@@ -53,7 +53,6 @@ export const fetchOneDevice = async (id) => {
     return data
 }
 
-// ------ Добавляю подключение для добавление crud с корзиной ------- //
 
 export const addToBasket = async (deviceId) => {
     const {response} = await $authHost.post('api/basket', deviceId)

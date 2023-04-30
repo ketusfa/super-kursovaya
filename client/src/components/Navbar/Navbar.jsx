@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Context } from "../../index"
 import s from "./Navbar.module.scss"
 import {observer} from "mobx-react-lite"
-import {ADMIN_ROUTE, LOGIN_ROUTE, SHOP_ROUTE} from "../../utils/consts"
+import {ADMIN_ROUTE, LOGIN_ROUTE, SHOP_ROUTE, BASKET_ROUTE} from "../../utils/consts"
 import { useHistory} from "react-router-dom"
 
 const Navbar = observer(() => {
@@ -32,22 +32,19 @@ const Navbar = observer(() => {
                 <Link className={s.navbar__link} to={SHOP_ROUTE}>shop home</Link>
             </div>
             {user.isAuth ?
-                
                 <div>
                       {user.isAdmin ?
-                             <button className={s.navbar__button} onClick={() =>{ history.push(ADMIN_ROUTE); console.log("admin panel")}}>Панель администратора</button>
+                             <button className={s.navbar__button} onClick={() => history.push(ADMIN_ROUTE)}>Панель администратора</button>
                             :
-                            <></>
+                            <button className={s.navbar__button} onClick={() => history.push(BASKET_ROUTE)}>Корзина</button>
                         }
-                   
                     <button className={s.navbar__button}  onClick={() => logOut()}>Выход</button>
                 </div>
                 :
-                
                <div>
                     <button className={s.navbar__button} onClick={() => history.push(LOGIN_ROUTE)}>Авторизация</button>
-                </div>
-                }
+               </div>
+            }
         </div>
         </>
     );

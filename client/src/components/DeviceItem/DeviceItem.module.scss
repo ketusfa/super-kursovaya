@@ -1,10 +1,10 @@
 .device__wrapper {
     width: 30vw;
     border: 2px solid black;
-    margin: 10px;
     padding: 1rem;
     display: flex;
     flex-direction: column;
+    min-width: 33.333333%
 }
 
 .device__imagewrapper img {
