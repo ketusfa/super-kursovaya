@@ -12,6 +12,7 @@ const Navbar = observer(() => {
     const history = useHistory()
 
     const {user} = useContext(Context)
+   
 
     const logOut = () => {
         user.setUser({})
@@ -32,16 +33,23 @@ const Navbar = observer(() => {
                 <Link className={s.navbar__link} to={SHOP_ROUTE}>shop home</Link>
             </div>
             {user.isAuth ?
-                <div>
-                      {user.isAdmin ?
-                             <button className={s.navbar__button} onClick={() => history.push(ADMIN_ROUTE)}>Панель администратора</button>
-                            :
-                            <button className={s.navbar__button} onClick={() => history.push(BASKET_ROUTE)}>Корзина</button>
-                        }
-                    <button className={s.navbar__button}  onClick={() => logOut()}>Выход</button>
-                </div>
+                
+                <div className={s.control__row}>
+
+                    <div className={s.auth__info} >Вы авторизованы как {user.user.email}</div>
+
+                    <div className={s.button__row}>
+                        {user.isAdmin ?
+                                <button className={s.navbar__button} onClick={() => history.push(ADMIN_ROUTE)}>Панель администратора</button>
+                                 :
+                                <button className={s.navbar__button} onClick={() => history.push(BASKET_ROUTE)}>Корзина</button>
+                             }
+                        <button className={s.navbar__button}  onClick={() => logOut()}>Выход</button>
+                    </div>
+                    
+                 </div>
                 :
-               <div>
+               <div  className={s.button__row}>
                     <button className={s.navbar__button} onClick={() => history.push(LOGIN_ROUTE)}>Авторизация</button>
                </div>
             }
