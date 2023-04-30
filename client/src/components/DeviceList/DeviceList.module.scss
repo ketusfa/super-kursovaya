@@ -1,13 +1,14 @@
 .device__wrapper {
   
     border: 1px solid red;
-   
-    padding: 1rem;
+
+    
    
     
 }
 
 .device__field {
     display: flex;
+    flex-wrap: wrap;
     
 }

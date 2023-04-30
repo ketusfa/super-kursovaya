@@ -1,9 +1,9 @@
 .navbar__wrapper {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     padding: 1rem;
     background-color: blueviolet;
+    justify-content: space-between;
 
     
 }
@@ -17,6 +17,11 @@
     font-size: 1.5rem;
 }
 
+.control__row {
+    display: flex;
+    flex-direction: row;
+}
+
 .navbar__button {
     padding: .5rem 1rem;
     margin-right: 1rem;
@@ -24,4 +29,11 @@
     background-color: aliceblue;
     border: 0px;
     
+}
+
+.auth__info {
+    color: white;
+    font-weight: bold;
+    margin: 5px 1rem;
+
 }
