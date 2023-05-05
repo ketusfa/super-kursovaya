@@ -7,6 +7,7 @@ import s from "./DeviceList.module.scss"
 
 const DeviceList = observer(() => {
         const {device} = useContext(Context)
+        
     return (
         
         <div className={s.device__wrapper}>
