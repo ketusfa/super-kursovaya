@@ -11,6 +11,11 @@ export const fetchTypes = async () => {
     return data
 }
 
+export const fetchOneType = async (id) => {
+    const {data} = await $host.get('api/type/' + id)
+    return data
+}
+
 export const delType = async (type) => {
     const {data} = await $authHost.delete('api/type',  { data: type })
     return data
@@ -23,6 +28,11 @@ export const createBrand = async (brand) => {
 
 export const fetchBrands = async () => {
     const {data} = await $host.get('api/brand', )
+    return data
+}
+
+export const fetchOneBrand = async (id) => {
+    const {data} = await $host.get('api/brand/' + id)
     return data
 }
 
