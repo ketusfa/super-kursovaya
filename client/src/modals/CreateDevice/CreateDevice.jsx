@@ -75,7 +75,7 @@ const CreateDevice =  observer( ({setModal, modal}) => {
         <div className={s.modal__wrapper}>
             
             <h1>Добавить новое устройство</h1>
-            <button className={s.modal__close} onClick={() => setModal(false)}>close</button>
+            <button className={s.modal__close} onClick={() => setModal(false)}>&#10006;</button>
             
             <form action="" className={s.modal__form}>
                 

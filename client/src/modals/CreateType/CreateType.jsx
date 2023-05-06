@@ -8,10 +8,12 @@ const CreateType = ({setModal, modal}) => {
 
     const addType = (e) => {
         e.preventDefault()
+        if(value) {
         createType({name: value}).then(() => {
             setValue('');
             setModal(false);
         })
+     }
     }
 
 

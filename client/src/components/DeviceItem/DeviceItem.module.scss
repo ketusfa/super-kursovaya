@@ -1,38 +1,59 @@
+@import "../../utils/consts.scss";
+
 .device__wrapper {
     
-    border: 1px solid black;
-    padding: 1rem;
+    border: 1px solid $dark-color;
+    border-radius: 12px;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    width: 33.33333%;
+    width: 20%;
+
+    &:hover{
+
+    cursor: pointer;
+    
+        .device__imagewrapper img {
+            transform: scale(1.05);
+        }
+    }
     
 }
-
-
 
 .device__imagewrapper {
     height: 70%;
+    min-height: 250px;
+    overflow: hidden;
 
-    img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    }
+        img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: all .5s ease;
+        }
 }
 .device__info {
-    
     display: flex;
     flex-direction: row;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
+    margin: 0 5px;
     
 }
 
 .device__brand {
     margin-left: 10px;
+
+}
+
+.device__name {
+    font-size: 1.4rem;
+    margin: 5px 10px 10px;
+    
 }
 
 .device__price {
-    font-size: 2rem;
+    font-size: 1.8rem;
+    margin: 5px 10px 0;
     font-weight: bold;
 }
 

@@ -22,15 +22,16 @@ const Admin = () => {
     return (
         <>
         <div className={s.admin__wrapper}>
-            
-                <button className={s.admin__button} onClick={() => setModalType(true)}>Добавить тип</button>
-                <button className={s.admin__button} onClick={() => setModalBrand(true)}>Добавить бренд</button>
-                <button className={s.admin__button} onClick={() => setModalDevice(true)}>Добавить устройство</button>
-
-                <button className={s.admin__button} onClick={() => setModalDeviceDelete(true)}>Удалить устройство</button>
-                <button className={s.admin__button} onClick={() => setModalTypeDelete(true)}>Удалить тип</button>
-                <button className={s.admin__button} onClick={() => setModalBrandDelete(true)}>Удалить бренд</button>
-            
+                <div className={s.admin__col}>
+                    <button className={s.admin__button} onClick={() => setModalType(true)}>Добавить тип</button>
+                    <button className={s.admin__button} onClick={() => setModalBrand(true)}>Добавить бренд</button>
+                    <button className={s.admin__button} onClick={() => setModalDevice(true)}>Добавить устройство</button>
+                </div>
+                <div className={s.admin__col}>
+                    <button className={s.admin__button} onClick={() => setModalTypeDelete(true)}>Удалить тип</button>
+                    <button className={s.admin__button} onClick={() => setModalBrandDelete(true)}>Удалить бренд</button>
+                    <button className={s.admin__button} onClick={() => setModalDeviceDelete(true)}>Удалить устройство</button>
+                </div>
         </div>
         <CreateBrand setModal={setModalBrand} modal={modalBrand}/>
         <CreateDevice setModal={setModalDevice} modal={modalDevice} />

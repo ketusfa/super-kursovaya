@@ -1,8 +1,10 @@
+@import "../../utils/consts.scss";
+
 .navbar__wrapper {
     display: flex;
     flex-direction: row;
     padding: 1rem;
-    background: linear-gradient(90deg, #cb08ac, 60%, #460774);
+    background: linear-gradient(90deg, $light-color, 60%, $dark-color);
     justify-content: space-between;
 
     
@@ -11,10 +13,12 @@
 .linkrow {
     display: flex;
     flex-direction: row;
+    margin-left: 2rem;
 }
 .navbar__link {
     margin-right: 2rem;
-    font-size: 2rem;
+    font-size: 2.3rem;
+    font-weight: 500;
     text-transform: uppercase;
   
 }
@@ -32,25 +36,22 @@
     margin:  .3rem .5rem;
     font-size: 1rem;
     color: white;
-    background-color: #cb08ac;
-    outline: 1px solid #cb08ac;
+    background-color: $light-color;
+    outline: 1px solid $light-color;
     border: none;
     border-radius: 4px;
     transition: all .3s ease;
    
 
     &:hover {
-        outline: 1px solid rgb(236, 236, 236);
+        outline: 1px solid rgb(255, 255, 255);
     }
     
 }
 
-
-
-
 .auth__info {
     color: white;
    
-    margin: 10px 3rem;
+    margin: 12px 3rem;
 
 }

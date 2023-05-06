@@ -8,10 +8,12 @@ const CreateBrand = ({setModal, modal}) => {
 
     const addBrand = (e) => {
         e.preventDefault()
+        if(value) {
         createBrand({name: value}).then(() => {
             setValue('');
             setModal(false);
         })
+     }
     }
 
 
