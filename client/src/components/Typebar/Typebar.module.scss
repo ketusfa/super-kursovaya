@@ -1,15 +1,26 @@
+@import "../../utils/consts.scss";
+
 .type__row {
     display: flex;
     flex-direction: column;
-    margin: 5rem 1rem 0;
+    margin: 5rem 1rem 60px;
 }
 
 .type__item {
     margin-top: 2rem;
-    padding: 1rem;
-    border: 1px solid pink;
+    padding: .5rem 1rem;
+    border: 1px solid $light-color;
+    background-color: white;
+    max-width: 150px;
+    color: black;
+    border-radius: 5px;
+    overflow: hidden;
+    font-size: 1.1rem;
+    transition: all .3s ease;
 }
 
 .active {
-    background-color: red;
+   background-color: $light-color;
+   border: 1px solid $dark-color;
+    color: white;
 }

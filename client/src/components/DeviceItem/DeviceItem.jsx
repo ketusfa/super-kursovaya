@@ -24,21 +24,22 @@ const DeviceItem = ({device}) => {
             <div className={s.device__imagewrapper}>
                 <img src={process.env.REACT_APP_API_URL + device.img}  alt={device.name}/>
             </div>
-            <div className={s.device__info}>
-                <div className={s.device__type}>
-                    {type.name}
+                <div className={s.device__price}>
+                    {device.price} ₽
                 </div>
-                <div className={s.device__brand}>
-                {brand.name}
-                </div>    
-            </div>
-            <div className={s.device__name}>
-                {device.name}
+                <div className={s.device__info}>
+                    <div className={s.device__type}>
+                        {type.name}
+                    </div>
+                    
+                    <div className={s.device__brand}>
+                    {brand.name}
+                    </div>    
                 </div>
-            <div className={s.device__price}>
-                {device.price} ₽
+                <div className={s.device__name}>
+                    {device.name}
+                </div>
             </div>
-        </div>
         </>
     );
 };
