@@ -2,9 +2,11 @@ import React, {useState,useEffect} from "react";
 import {fetchOneDevice, addToBasket} from "../../http/deviceAPI"
 import {useParams} from "react-router-dom" 
 
+import s from "./DevicePage.module.scss"
+
 const DevicePage = () => {
 
-    const [device, setDevice] = useState({info: []})
+    const [device, setDevice] = useState({})
     const {id} = useParams()
 
     useEffect(() => {
@@ -20,10 +22,10 @@ const DevicePage = () => {
     return (
         <>
             <h1>{device.name}</h1>
-            <button  onClick={add} >Добавить в корзину</button>
-            <img  src={process.env.REACT_APP_API_URL + device.img}/>
+            <img  height={200} src={process.env.REACT_APP_API_URL + device.img}/>
             <h3>Цена {device.price}</h3>
-            <div>{device.raiting}</div>
+            <button  onClick={add} >Добавить в корзину</button>
+            <div className={s.device__data} dangerouslySetInnerHTML={{ __html: device.data}}></div>
         </>
     );
 }
