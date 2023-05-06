@@ -48,10 +48,10 @@ class DeviceController {
             devices = await Device.findAll()
         }
         if (brandId && !typeId) {
-            devices = await Device.findAll({where:brandId})
+            devices = await Device.findAll({where:{brandId: brandId}})
         }
         if (!brandId && typeId) {
-            devices = await Device.findAll({where:typeId})
+            devices = await Device.findAll({where:{typeId: typeId}})
         }
         if (brandId && typeId) {
             devices = await Device.findAll({where:{brandId, typeId}});

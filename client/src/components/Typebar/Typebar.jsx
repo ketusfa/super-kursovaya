@@ -10,12 +10,18 @@ const Typebar = observer(() => {
         <>
         <div>
             <div className={s.type__row}>
+                <button 
+                    className={`${s.type__item} ${!device.selectedType.id ? s.active : ''}`}
+                    onClick={() => device.setSelectedType({})}
+                 >Все</button>
+                
                 {device.types.map(type => 
                     <button 
-                    className={s.type__item}
+                    className={`${s.type__item} ${type.id === device.selectedType.id ? s.active : ''}`}
+                    
                     key={type.id} 
                     onClick={() => device.setSelectedType(type)}
-                    active={type.id === device.selectedType}
+                    
                     >{type.name}</button>
                 )}
             </div>
