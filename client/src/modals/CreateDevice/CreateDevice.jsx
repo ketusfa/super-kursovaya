@@ -7,7 +7,7 @@ import {Context} from "../../index"
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
-import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';
+
 
 
 import s from "../modals.module.scss"
@@ -21,6 +21,8 @@ const CreateDevice =  observer( ({setModal, modal}) => {
     const [file, setFile] = useState(null)
     const [editorData, setEditorData] = useState('');
     const fileInputRef = useRef(null);
+
+   
 
     const resetData = () => {
         setModal(false)
@@ -135,9 +137,16 @@ const CreateDevice =  observer( ({setModal, modal}) => {
                 required/>
                 
                 
-               
-                <CKEditor editor={ ClassicEditor } 
-                onChange={ handleEditorData }/>
+                <div className={s.editor__wrapper}>
+                    <CKEditor editor={ ClassicEditor } 
+                    config={{         
+                        
+                        toolbar: ['heading', '|', 'bold', 'italic', 'blockQuote', 'link', 'numberedList', 'bulletedList', 'insertTable',
+                        'tableColumn', 'tableRow', 'mergeTableCells', '|', 'undo', 'redo'],
+                    }}   
+                    onChange={ handleEditorData }/>
+                </div>
+ 
                 <input type="hidden" name="editorData" value={editorData} />
 
                 <button type="submit" onClick={addDevice} >Добавить</button>

@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.3.4",
     "bootstrap": "^5.2.3",
+    "ckeditor5-custom-build": "file:src/editorConfig",
     "jwt-decode": "^3.1.2",
     "mobx": "^6.9.0",
     "mobx-react-lite": "^3.4.3",
