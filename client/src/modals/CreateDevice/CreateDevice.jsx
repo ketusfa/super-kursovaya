@@ -3,6 +3,13 @@ import {createDevice, fetchBrands, fetchTypes} from "../../http/deviceAPI";
 import {observer} from "mobx-react-lite";
 import {Context} from "../../index"
 
+
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+
+
+
+
 import s from "../modals.module.scss"
 
 const CreateDevice =  observer( ({setModal, modal}) => {
@@ -12,8 +19,10 @@ const CreateDevice =  observer( ({setModal, modal}) => {
     const [name, setName] = useState('')
     const [price, setPrice] = useState(0)
     const [file, setFile] = useState(null)
-    const [info, setInfo] = useState([])
+    const [editorData, setEditorData] = useState('');
     const fileInputRef = useRef(null);
+
+   
 
     const resetData = () => {
         setModal(false)
@@ -21,7 +30,7 @@ const CreateDevice =  observer( ({setModal, modal}) => {
         setPrice(0)
         setFile(null)
         fileInputRef.current.value = null;
-        setInfo([])
+        setEditorData("")
         device.setSelectedType({})
         device.setSelectedBrand({})
     }
@@ -33,21 +42,12 @@ const CreateDevice =  observer( ({setModal, modal}) => {
         fetchBrands().then(data => device.setBrands(data))
     }, [])
 
-    const addInfo = (e) => {
-        e.preventDefault()
-        setInfo([...info, {title: '', description: '', number: Date.now()}])
-    }
+    const handleEditorData = (event, editor) => {
+        const data = editor.getData();
+        setEditorData(data);
+    };
 
-    const removeInfo = (e, number) => {
-            e.preventDefault()
-            setInfo(info.filter(i => i.number !== number))
-        }
     
-
-    const changeInfo = (key, value, number) => {
-        setInfo(info.map(i => i.number === number ? {...i, [key]: value} : i))
-    }
-
     const selectFile = e => {
         setFile(e.target.files[0])
     }
@@ -61,8 +61,8 @@ const CreateDevice =  observer( ({setModal, modal}) => {
             formData.append('img', file)
             formData.append('brandId', device.selectedBrand.id)
             formData.append('typeId', device.selectedType.id)
-            formData.append('info', JSON.stringify(info))
-            console.log(name, price, file, device.selectedBrand.id, device.selectedType.id, JSON.stringify(info))
+            formData.append('editorData', editorData);
+            console.log(name, price, file, device.selectedBrand.id, device.selectedType.id, editorData)
             createDevice(formData).then(() => resetData())
         } catch(error){
             alert(error)
@@ -136,24 +136,18 @@ const CreateDevice =  observer( ({setModal, modal}) => {
                 placeholder="Изображение" 
                 required/>
                 
-                <button onClick={addInfo}> Добавить новое свойство</button>
-                {info.map(i =>
-                    <div className={s.info__wrapper}>
-                                <input 
-                                type="text"
-                                value={i.title}
-                                onChange={(e) => changeInfo('title', e.target.value, i.number)}
-                                placeholder="Введите название свойства" />
-
-                                <input 
-                                type="text"
-                                value={i.description}
-                                onChange={(e) => changeInfo('description', e.target.value, i.number)}
-                                placeholder="Введите описание свойства" />
+                
+                <div className={s.editor__wrapper}>
+                    <CKEditor editor={ ClassicEditor } 
+                    config={{         
                         
-                                <button onClick={(e) => removeInfo(e, i.number)}>Удалить</button>
-                            </div>
-                    )}
+                        toolbar: ['heading', '|', 'bold', 'italic', 'blockQuote', 'link', 'numberedList', 'bulletedList', 'insertTable',
+                        'tableColumn', 'tableRow', 'mergeTableCells', '|', 'undo', 'redo'],
+                    }}   
+                    onChange={ handleEditorData }/>
+                </div>
+ 
+                <input type="hidden" name="editorData" value={editorData} />
 
                 <button type="submit" onClick={addDevice} >Добавить</button>
             </form>

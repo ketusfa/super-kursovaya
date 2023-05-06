@@ -7,6 +7,9 @@ import {Context} from "../../index"
 import {observer} from "mobx-react-lite";
 import {fetchBrands, fetchDevices, fetchTypes} from "../../http/deviceAPI";
 
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+
 import s from "./Shop.module.scss"
 
 const Shop =  observer(() => {
@@ -18,6 +21,9 @@ const Shop =  observer(() => {
         fetchDevices().then(data =>  device.setDevices(data))
         
     }, [])
+
+
+    
 
     return (
         <>
