@@ -45,10 +45,10 @@ Basket.belongsTo(User)
 Basket.hasMany(BasketDevice)
 BasketDevice.belongsTo(Basket)
 
-Type.hasMany(Device)
+Type.hasMany(Device, {onDelete: 'CASCADE'})
 Device.belongsTo(Type)
 
-Brand.hasMany(Device)
+Brand.hasMany(Device, {onDelete: 'CASCADE'})
 Device.belongsTo(Brand)
 
 Device.hasMany(BasketDevice, {onDelete: 'CASCADE'})
