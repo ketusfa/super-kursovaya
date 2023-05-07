@@ -9,6 +9,7 @@ const DeviceItem = ({device}) => {
 
     const [type, setType] = useState("");
     const [brand, setBrand] = useState("");
+    
 
     useEffect(() => {
         fetchOneBrand(device.brandId).then(data => setBrand(data))
@@ -16,8 +17,7 @@ const DeviceItem = ({device}) => {
     }, [])
        
     const history = useHistory()
-    console.log(type.name)
-    console.log(brand.name)
+   
     return (
         <>
         <div className={s.device__wrapper} onClick={() => history.push(DEVICE_ROUTE + '/' + device.id)}>
