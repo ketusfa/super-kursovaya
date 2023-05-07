@@ -28,18 +28,32 @@ const DevicePage = () => {
     }
 
     if (loading) {
-        return <h2>Загрузка...</h2>
+        return (
+        <div className={s.device__wrapper} >
+            <h2>Загрузка...</h2>
+            </div>
+        )    
     }
     
     return (
-        <>
-            <h1>{device.name}</h1>
-            <div>{type.name} {brand.name}</div>
-            <img  height={200} src={process.env.REACT_APP_API_URL + device.img}/>
-            <h3>Цена {device.price}</h3>
-            <button  onClick={add} >Добавить в корзину</button>
+       
+        <div className={s.device__wrapper} >
+            <div className={s.device__title}>
+            {type.name} {brand.name} {device.name}
+            </div>
+            
+            <div className={s.device__row} >
+                <div className={s.device__image}>
+                    <img  src={process.env.REACT_APP_API_URL + device.img}/>
+                </div>
+                <div className={s.device__box} >
+                    <h3>{device.price} ₽</h3>
+                    <button className={s.device__button} onClick={add} >Добавить в корзину</button>
+                </div>
+            </div>
+            <div className={s.device__info}> О товаре </div>
             <div className={s.device__data} dangerouslySetInnerHTML={{ __html: device.data}}></div>
-        </>
+        </div>
     );
 }
 

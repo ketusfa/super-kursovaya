@@ -59,15 +59,15 @@ const Auth = observer(() => {
             <input type="text" placeholder="Ваш пароль" value={password}  onChange={e => setPassword(e.target.value)}/>
             {isLogin ? 
             <div>
-                Зарегистрируйтесь <NavLink to={REGISTRATION_ROUTE}>тут</NavLink>
+                Зарегистрируйтесь <NavLink  className={s.auth__link} to={REGISTRATION_ROUTE}>тут</NavLink>
             </div>
             :
             <div>
-                Чтобы войти перейдите <NavLink to={LOGIN_ROUTE}>сюда</NavLink>
+                Чтобы войти перейдите <NavLink  className={s.auth__link} to={LOGIN_ROUTE}>сюда</NavLink>
             </div>
 
             }
-            <button onClick={click}>
+            <button className={s.login__button} onClick={click}>
                 {isLogin ? "Войти" : 'Зарегистрироваться'}
             </button>
         </form>
