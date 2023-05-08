@@ -1,0 +1,50 @@
+@import "../../utils/consts.scss";
+
+.item__wrapper {
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+}
+
+.item__row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.item__img {
+    width: 40%;
+    height: 180px;
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+
+    }
+}
+
+.item__info {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.item__button {
+    padding: 20px 50px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: white;
+    background-color: $light-color;
+    outline: 1px solid $light-color;
+    border: none;
+    border-radius: 8px;
+    transition: all .3s ease;
+    height: 100%;
+    
+    &:hover {
+        background-color: $dark-color;
+        outline: 1px solid  $dark-color;
+        color: white;
+    }
+
+}
