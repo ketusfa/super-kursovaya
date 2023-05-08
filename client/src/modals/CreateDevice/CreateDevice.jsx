@@ -72,87 +72,80 @@ const CreateDevice =  observer( ({setModal, modal}) => {
 
     return(
         <div className={`${s.overlay} ${modal ? s.show : "" }`}> 
-        <div className={s.modal__wrapper}>
-            
-            <h1>Добавить новое устройство</h1>
-            <button className={s.modal__close} onClick={() => setModal(false)}>&#10006;</button>
-            
-            <form action="" className={s.modal__form}>
+            <div className={s.modal__wrapper}>
                 
+                <h1>Добавить новое устройство</h1>
+                <button className={s.modal__close} onClick={() => setModal(false)}>&#10006;</button>
+                
+                <form action="" className={s.modal__form}>       
+                    <div className={s.dropdown}>
+                        <span>{ device.selectedType.name ||  "Выберите тип"}</span>
+                        <div className={s.dropdown__content}>
+                        {
+                            device.types.map(type => 
+                        <p 
+                        key={type.id}
+                        onClick={() =>  device.setSelectedType(type)}>
+                                {type.name}
+                        </p>
+                            )
+                        }
+                        </div>
+                    </div>  
+                    <div className={s.dropdown}>
+                        <span>{device.selectedBrand.name ||  "Выберите бренд"}</span>
+                        <div className={s.dropdown__content}>
+                        {
+                            device.brands.map(brand => 
+                        <p 
+                        key={brand.id}
+                        onClick={() =>  device.setSelectedBrand(brand)}>
+                                {brand.name}
+                        </p>
+                            )
+                        }
+                        </div>
+                    </div>   
 
-                <div className={s.dropdown}>
-                    <span>{ device.selectedType.name ||  "Выберите тип"}</span>
-                    <div className={s.dropdown__content}>
-                    {
-                        device.types.map(type => 
-                       <p 
-                       key={type.id}
-                       onClick={() =>  device.setSelectedType(type)}>
-                            {type.name}
-                       </p>
-                        )
-                    }
+                    <span>Введите название устройства</span>
+                    <input 
+                    type="text"  
+                    value={name}
+                    onChange={e => setName(e.target.value)} 
+                    placeholder="Название устройства " 
+                    required/>
+
+                    <span>Введите стоимость устройства</span>
+                    <input 
+                    type="number" 
+                    value={price}
+                    onChange={e => setPrice(Number(e.target.value))}
+                    placeholder="Стоимость устройства "
+                    required/>
+
+                    <span>Изображение</span> 
+                    <input 
+                    type="file" 
+                    onChange={selectFile} 
+                    ref={fileInputRef}
+                    placeholder="Изображение" 
+                    required/>
+                    
+                    <span>Введите описание устройства</span>   
+                    <div className={s.editor__wrapper}>
+                        <CKEditor editor={ ClassicEditor } 
+                        config={{         
+                            
+                            toolbar: ['heading', '|', 'bold', 'italic', 'blockQuote', 'link', 'numberedList', 'bulletedList', 'insertTable',
+                            'tableColumn', 'tableRow', 'mergeTableCells', '|', 'undo', 'redo'],
+                        }}   
+                        onChange={ handleEditorData }/>
                     </div>
-                </div>  
-
-
-                 <div className={s.dropdown}>
-                    <span>{device.selectedBrand.name ||  "Выберите бренд"}</span>
-                    <div className={s.dropdown__content}>
-                    {
-                        device.brands.map(brand => 
-                       <p 
-                       key={brand.id}
-                       onClick={() =>  device.setSelectedBrand(brand)}>
-                            {brand.name}
-                       </p>
-                        )
-                    }
-                    </div>
-                </div>   
-                
-              
-                
-                <input 
-                type="text"  
-                value={name}
-                onChange={e => setName(e.target.value)} 
-                placeholder="Название устройства " 
-                required/>
-
-                <input 
-                type="number" 
-                value={price}
-                onChange={e => setPrice(Number(e.target.value))}
-                placeholder="Стоимость устройства "
-                 required/>
-
-                <label >Изображение:</label>
-
-                <input 
-                type="file" 
-                onChange={selectFile} 
-                ref={fileInputRef}
-                placeholder="Изображение" 
-                required/>
-                
-                
-                <div className={s.editor__wrapper}>
-                    <CKEditor editor={ ClassicEditor } 
-                    config={{         
-                        
-                        toolbar: ['heading', '|', 'bold', 'italic', 'blockQuote', 'link', 'numberedList', 'bulletedList', 'insertTable',
-                        'tableColumn', 'tableRow', 'mergeTableCells', '|', 'undo', 'redo'],
-                    }}   
-                    onChange={ handleEditorData }/>
-                </div>
- 
-                <input type="hidden" name="editorData" value={editorData} />
-
-                <button type="submit" onClick={addDevice} >Добавить</button>
-            </form>
+                    <input type="hidden" name="editorData" value={editorData} />
+                    <button type="submit" onClick={addDevice} >Добавить</button>
+                </form>
+            </div>
         </div>
-    </div>
 )
 
 });

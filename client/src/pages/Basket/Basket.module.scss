@@ -9,11 +9,17 @@
 }
 
 .basket__title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     font-size: 1.2rem;
     font-weight: bold;
+    margin: 0 auto;
 }
 
-
+h2.basket__text {
+    font-size: 1.5em;
+}
 .basket__button {
     display: block;
     padding: 12px 24px 14px;

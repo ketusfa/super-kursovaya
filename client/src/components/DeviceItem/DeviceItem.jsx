@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import {useHistory} from "react-router-dom"
 import {DEVICE_ROUTE} from "../../utils/consts"
 import { fetchOneBrand, fetchOneType } from "../../http/deviceAPI";
+import splitPrice from "../../utils/splicePrice"
 
 import s from "./DeviceItem.module.scss"
 
@@ -16,14 +17,7 @@ const DeviceItem = ({device}) => {
         fetchOneBrand(device.brandId).then(data => setBrand(data))
         fetchOneType(device.typeId).then(data => setType(data))
     }, [])
-       
-    const splitPrice = (price) => {
-        return price.toString()
-        .split("").reverse().join("")
-       .replace(/(\d{3})/g,"$1 ")
-       .split("").reverse().join("")
-    }
-   
+
     return (
         <>
         <div className={s.device__wrapper} onClick={() => history.push(DEVICE_ROUTE + '/' + device.id)}>

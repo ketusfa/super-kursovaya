@@ -23,7 +23,7 @@ const Admin = observer(() => {
         const [modalDeviceDelete, setModalDeviceDelete] = React.useState(false);
         const [modalTypeDelete, setModalTypeDelete] = React.useState(false);
         const [modalBrandDelete, setModalBrandDelete] = React.useState(false);
-
+        
     return (
         <>
         <div className={s.admin__wrapper}>
@@ -49,7 +49,6 @@ const Admin = observer(() => {
         <DeleteDevice setModal={setModalDeviceDelete} modal={modalDeviceDelete}/>
         <DeleteType setModal={setModalTypeDelete} modal={modalTypeDelete}/>
         <DeleteBrand setModal={setModalBrandDelete} modal={modalBrandDelete}/>
-        
         </>
     );
 });

@@ -18,7 +18,7 @@ const CreateBrand = ({setModal, modal}) => {
 
 
     return(
-        <div className={`${s.overlay} ${modal ? s.show : "" }`}> 
+    <div className={`${s.overlay} ${modal ? s.show : "" }`}> 
         <div className={s.modal__wrapper}>
             
             <h1>Добавить новый бренд</h1>
