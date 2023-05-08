@@ -1,6 +1,7 @@
 import React, {useState,useEffect} from "react";
 import {fetchOneDevice, addToBasket,  fetchOneBrand, fetchOneType} from "../../http/deviceAPI"
 import {useParams} from "react-router-dom" 
+import splitPrice from "../../utils/splicePrice"
 
 import s from "./DevicePage.module.scss"
 
@@ -27,12 +28,6 @@ const DevicePage = () => {
         addToBasket(formData).then(response => alert(`Товар ` + device.name + ` был добавлен в вашу корзину!`))
     }
 
-    const splitPrice = (price) => {
-        return price.toString()
-        .split("").reverse().join("")
-       .replace(/(\d{3})/g,"$1 ")
-       .split("").reverse().join("")
-    }
 
     if (loading) {
         return (
@@ -51,7 +46,7 @@ const DevicePage = () => {
             
             <div className={s.device__row} >
                 <div className={s.device__image}>
-                    <img  src={process.env.REACT_APP_API_URL + device.img}/>
+                    <img  src={process.env.REACT_APP_API_URL + device.img} alt={device.id}/>
                 </div>
                 <div className={s.device__box} >
                     <h3>{splitPrice(device.price)} ₽</h3>

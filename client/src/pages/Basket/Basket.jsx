@@ -44,7 +44,7 @@ const Basket = observer(() => {
    
         </div>
             {device.basket.map(item =>
-                <BasketItem item={item} />
+                <BasketItem key={item.id} item={item} />
             )}
      </div>
     );
