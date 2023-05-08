@@ -2,8 +2,7 @@ const { Device, BasketDevice, Basket } = require("../models/models")
 const ApiError = require('../error/ApiError');
 
 class BasketController {
-    // ------ CRUD корзины ------ //
-
+ 
     async addToBasket(req,res,next){
         const user = req.user
         const {deviceId} = req.body

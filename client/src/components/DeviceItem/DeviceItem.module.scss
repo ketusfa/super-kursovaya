@@ -21,8 +21,8 @@
 }
 
 .device__imagewrapper {
-    height: 70%;
-    min-height: 250px;
+    
+    aspect-ratio: 1;
     overflow: hidden;
 
         img {
