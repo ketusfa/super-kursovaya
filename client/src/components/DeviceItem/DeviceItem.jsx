@@ -7,16 +7,22 @@ import s from "./DeviceItem.module.scss"
 
 const DeviceItem = ({device}) => {
 
+    const history = useHistory()
+
     const [type, setType] = useState("");
     const [brand, setBrand] = useState("");
     
-
     useEffect(() => {
         fetchOneBrand(device.brandId).then(data => setBrand(data))
         fetchOneType(device.typeId).then(data => setType(data))
     }, [])
        
-    const history = useHistory()
+    const splitPrice = (price) => {
+        return price.toString()
+        .split("").reverse().join("")
+       .replace(/(\d{3})/g,"$1 ")
+       .split("").reverse().join("")
+    }
    
     return (
         <>
@@ -25,7 +31,7 @@ const DeviceItem = ({device}) => {
                 <img src={process.env.REACT_APP_API_URL + device.img}  alt={device.name}/>
             </div>
                 <div className={s.device__price}>
-                    {device.price} ₽
+                    {splitPrice(device.price)} ₽
                 </div>
                 <div className={s.device__info}>
                     <div className={s.device__type}>

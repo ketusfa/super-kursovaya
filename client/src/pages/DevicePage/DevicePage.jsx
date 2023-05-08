@@ -27,10 +27,17 @@ const DevicePage = () => {
         addToBasket(formData).then(response => alert(`Товар ` + device.name + ` был добавлен в вашу корзину!`))
     }
 
+    const splitPrice = (price) => {
+        return price.toString()
+        .split("").reverse().join("")
+       .replace(/(\d{3})/g,"$1 ")
+       .split("").reverse().join("")
+    }
+
     if (loading) {
         return (
         <div className={s.device__wrapper} >
-            <h2>Загрузка...</h2>
+            <h2 className={s.device__title}>Загрузка...</h2>
             </div>
         )    
     }
@@ -47,7 +54,7 @@ const DevicePage = () => {
                     <img  src={process.env.REACT_APP_API_URL + device.img}/>
                 </div>
                 <div className={s.device__box} >
-                    <h3>{device.price} ₽</h3>
+                    <h3>{splitPrice(device.price)} ₽</h3>
                     <button className={s.device__button} onClick={add} >Добавить в корзину</button>
                 </div>
             </div>
