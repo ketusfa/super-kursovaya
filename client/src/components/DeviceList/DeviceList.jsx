@@ -6,10 +6,10 @@ import DeviceItem from "../DeviceItem/DeviceItem"
 import s from "./DeviceList.module.scss"
 
 const DeviceList = observer(() => {
-        const {device} = useContext(Context)
+
+    const {device} = useContext(Context)
         
     return (
-        
         <div className={s.device__wrapper}>
             <div className={s.device__field}>
                 {device.devices.map(device => 
@@ -17,7 +17,6 @@ const DeviceList = observer(() => {
                 )}
             </div>
         </div>
-        
     );
 });
 

@@ -9,20 +9,20 @@
     flex-direction: column;
     width: 270px;
     margin: 20px 10px;
+    transition: all .5s ease;
     &:hover{
-
-    cursor: pointer;
-    
-        .device__imagewrapper img {
-            transform: scale(1.05);
-        }
+        border: 1px solid $light-color;
+        cursor: pointer;
+            .device__imagewrapper img {
+                transform: scale(1.05);
+            }
     }
     
 }
 
 .device__imagewrapper {
-    height: 70%;
-    min-height: 250px;
+    
+    aspect-ratio: 1;
     overflow: hidden;
 
         img {
@@ -36,14 +36,14 @@
     display: flex;
     flex-direction: row;
     font-size: 1.4rem;
-    margin: 0 5px;
+    margin: 0 10px;
     min-height: 2.4rem;
-    
+    letter-spacing: -1px;
     
 }
 
 .device__brand {
-    margin-left: 10px;
+    margin-left: 5px;
 
 }
 

@@ -1,4 +1,42 @@
-.product__wrapper {
-    border: 3px solid red;
+@import "../../utils/consts.scss";
+
+.basket__wrapper {
+    background-color: white;
+    border-radius: 12px;
+    text-align: center;
+    padding: 2rem;
+   
+}
+
+.basket__title {
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0 auto;
+}
+
+h2.basket__text {
+    font-size: 1.5em;
+}
+.basket__button {
+    display: block;
+    padding: 12px 24px 14px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: white;
+    background-color: $light-color;
+    outline: 1px solid $light-color;
+    border: none;
+    border-radius: 8px;
+    transition: all .3s ease;
+    min-width: 300px;
+    width: 30%;
+    margin: 0 auto;
+    &:hover {
+        background-color: $dark-color;
+        outline: 1px solid  $dark-color;
+        color: white;
+    }
 }

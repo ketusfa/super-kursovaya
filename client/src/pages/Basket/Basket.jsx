@@ -2,9 +2,10 @@ import React, { useEffect, useContext } from 'react';
 import { Context } from '../../index';
 import { getBasket } from '../../http/deviceAPI';
 import { observer } from 'mobx-react-lite';
-
-import {delFromBasket} from "../../http/deviceAPI"
-
+import { Link } from "react-router-dom";
+import {SHOP_ROUTE} from "../../utils/consts"
+import splitPrice from "../../utils/splicePrice"
+import BasketItem from "../../components/BasketItem/BasketItem"
 import s from "./Basket.module.scss"
 
 
@@ -14,52 +15,38 @@ const Basket = observer(() => {
     
 
     useEffect(() => {
-        getBasket().then(data => device.setBaskets(data))
+        getBasket().then(data => device.setBasket(data))
+      
     }, [])
 
-    const dBasketDevice = async (e, id) => {
-        try {
-            e.preventDefault()
-            await delFromBasket({id: id})
-            let data = await getBasket()
-            device.setBaskets(data)
-        } catch(err){
-             alert(err.response.data.message)
-        }   
-    }
+    
 
     let prices = 0;
-    {device.basket.map(price =>
+    device.basket.map(price =>
         prices += Number(price.device.price)
-    )}
+    )
+
+    if(!device.basket.length) {
+        return(
+       <div className={s.basket__wrapper}>
+            <h2 className={s.basket__text}>В корзине пока пусто</h2>
+            <p className={s.basket__text}>Загляните на главную, чтобы выбрать товары</p>
+            <Link className={s.basket__button} to={SHOP_ROUTE}>Перейти на главную</Link>
+       </div>
+        )
+    }
 
     return (
-     <>
-            <h1>Корзина</h1>
-
-            <h2>Итого:</h2>
-            <h3>{prices}<span >рублей</span></h3>
-           
-        
-            {device.basket.map(product =>
-                <div className={s.product__wrapper}>
-                            <div>
-                                <img src={process.env.REACT_APP_API_URL + product.device.img} width={200} />
-                                <h2>{product.device.name}</h2>
-                                <h2> device id {product.device.id}</h2>
-                                <h2> devicebasket id {product.id}</h2>
-                            </div>
-                     
-                            <div >
-                                <h2 >{product.device.price} рублей</h2>
-                            </div>
-                            <button onClick={(e) => dBasketDevice(e, product.id)}>Удалить</button>
-                      
-                    </div>
-               
+     <div className={s.basket__wrapper}>
+        <div className={s.basket__title}>
+            <h2>Корзина</h2>
+            <h2>Итого {splitPrice(prices)} ₽</h2>
+   
+        </div>
+            {device.basket.map(item =>
+                <BasketItem item={item} />
             )}
-     
-     </>
+     </div>
     );
 });
 

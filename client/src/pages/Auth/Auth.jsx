@@ -39,14 +39,20 @@ const Auth = observer(() => {
                
             } 
             history.push(SHOP_ROUTE)
-            
-            console.log("pereshel v shop, user posle logina:")
-            console.log(user)
         } catch (e) {
             alert(e.response.data.message)
         }
 
     }
+
+    function showPass(e) {
+        const passwordInput = document.querySelector('input[name="password"]');
+        if (e.target.checked) {
+          passwordInput.type = "text";
+        } else {
+          passwordInput.type = "password";
+        }
+      }
 
 
     return (
@@ -56,18 +62,23 @@ const Auth = observer(() => {
        
         <form className={s.auth__form} action="">
             <input type="text" placeholder="Ваша почта"  value={email} onChange={e => setEmail(e.target.value)}/>
-            <input type="text" placeholder="Ваш пароль" value={password}  onChange={e => setPassword(e.target.value)}/>
+            <input name="password" type="password" placeholder="Ваш пароль" value={password}  onChange={e => setPassword(e.target.value)}/>
+            <div className={s.password__show}>
+                        <div className={s.password__label} >Показать пароль</div>
+                        <input  className={s.password__check} type="checkbox" onClick={(e) => showPass(e)}/>
+            </div>
+
             {isLogin ? 
             <div>
-                Зарегистрируйтесь <NavLink to={REGISTRATION_ROUTE}>тут</NavLink>
+                Зарегистрируйтесь <NavLink  className={s.auth__link} to={REGISTRATION_ROUTE}>тут</NavLink>
             </div>
             :
             <div>
-                Чтобы войти перейдите <NavLink to={LOGIN_ROUTE}>сюда</NavLink>
+                Чтобы войти перейдите <NavLink  className={s.auth__link} to={LOGIN_ROUTE}>сюда</NavLink>
             </div>
 
             }
-            <button onClick={click}>
+            <button className={s.login__button} onClick={click}>
                 {isLogin ? "Войти" : 'Зарегистрироваться'}
             </button>
         </form>
